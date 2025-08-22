@@ -55,7 +55,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <img src={Logo} className="w-[300px]" alt="JMS Global" />
+            <img src={Logo} className="w-[250px] sm:w-[300px]" alt="JMS Global" />
           </div>
 
           {/* Desktop Navigation */}

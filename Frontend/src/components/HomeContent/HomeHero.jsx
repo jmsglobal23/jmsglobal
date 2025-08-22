@@ -66,7 +66,7 @@ const HomeHero = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[85vh]  overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
