@@ -1,6 +1,10 @@
 // HomeHighlight.jsx
 import React, { useState, useEffect } from 'react';
-import { FaCheckCircle, FaShoppingCart, FaCreditCard, FaShippingFast, FaLeaf, FaArrowRight, FaRocket, FaHandshake } from 'react-icons/fa';
+import { FaLeaf, FaArrowRight, FaRocket, FaHandshake } from 'react-icons/fa';
+import { GiFruitBowl } from "react-icons/gi";
+import { FaTruck } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaMoneyCheck } from "react-icons/fa";
 
 const HomeHighlight = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -17,7 +21,7 @@ const HomeHighlight = () => {
       number: "01",
       title: "Evaluate Products",
       description: "Based on your needs we evaluate a range of products considering factors like quality, suitability for your climate. We'll recommend the best solution tailored to you.",
-      icon: <FaCheckCircle className="text-2xl" />,
+      icon: <GiFruitBowl className="text-5xl" />, // Increased from text-2xl to text-5xl
       color: "from-emerald-600 to-emerald-400",
       fruit: "🍎"
     },
@@ -25,7 +29,7 @@ const HomeHighlight = () => {
       number: "02",
       title: "Place your Order",
       description: "Once you have chosen your products, we make it easy to place an order. We ensure quick processing for documentation, logistics, packaging and custom clearance.",
-      icon: <FaShoppingCart className="text-2xl" />,
+      icon: <FaCartShopping className="text-5xl" />, // Increased from text-2xl to text-5xl
       color: "from-emerald-600 to-emerald-400",
       fruit: "🍇"
     },
@@ -33,7 +37,7 @@ const HomeHighlight = () => {
       number: "03",
       title: "Payment Terms",
       description: "Payment must be done in advance Or 50% Advance And 50% Against Bill Of Lading (BL) Is Compulsory. Secure and transparent payment process.",
-      icon: <FaCreditCard className="text-2xl" />,
+      icon: <FaMoneyCheck className="text-5xl" />, // Increased from text-2xl to text-5xl
       color: "from-emerald-600 to-emerald-400",
       fruit: "🍍"
     },
@@ -41,7 +45,7 @@ const HomeHighlight = () => {
       number: "04",
       title: "Shipping & Delivery",
       description: "We Arrange Shipment via Sea, Air or Land Transport Based on your preference and urgency. Tracking Details are shared once dispatched.",
-      icon: <FaShippingFast className="text-2xl" />,
+      icon: <FaTruck className="text-5xl" />, // Increased from text-2xl to text-5xl
       color: "from-emerald-600 to-emerald-400",
       fruit: "🍌"
     }
@@ -119,9 +123,9 @@ const HomeHighlight = () => {
                   {step.fruit}
                 </div>
 
-                {/* Content */}
-                <div className="!mt-8 !mb-4 flex justify-center">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center text-white transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                {/* Content - Adjusted spacing for larger icons */}
+                <div className="!mt-10 !mb-6 flex justify-center"> {/* Increased margin for larger icons */}
+                  <div className={`flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 text-emerald-600`}>
                     {step.icon}
                   </div>
                 </div>

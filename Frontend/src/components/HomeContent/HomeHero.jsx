@@ -7,6 +7,7 @@ import Hero3 from '../../assets/hero3.jpg';
 const HomeHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('next');
+  const [isMobile, setIsMobile] = useState(false);
   
   const slides = [
     {
@@ -31,6 +32,20 @@ const HomeHero = () => {
       bgImage: Hero3
     }
   ];
+
+  // Check if mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   // Auto slide change every 5 seconds
   useEffect(() => {
@@ -66,7 +81,7 @@ const HomeHero = () => {
   };
 
   return (
-    <div className="relative w-full h-[85vh]  overflow-hidden">
+    <div className="relative w-full h-[85vh] overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -98,10 +113,10 @@ const HomeHero = () => {
         </div>
       ))}
       
-      {/* Navigation arrows */}
+      {/* Navigation arrows - hidden on mobile */}
       <button 
         onClick={goToPrevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer"
+        className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Previous slide"
       >
         <FaChevronLeft size={24} />
@@ -109,7 +124,7 @@ const HomeHero = () => {
       
       <button 
         onClick={goToNextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer"
+        className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Next slide"
       >
         <FaChevronRight size={24} />

@@ -22,7 +22,7 @@ const HomeBanner = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 text-gray-800 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-r from-white to-[#f5fdf6] text-gray-800 overflow-hidden relative">
       {/* Animated fruit background elements */}
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-10 left-10 w-16 h-16 bg-[url('https://img.icons8.com/emoji/48/000000/banana.png')] bg-cover animate-fruit-float"></div>

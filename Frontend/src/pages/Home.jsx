@@ -4,6 +4,8 @@ import HomeCategory from '../components/HomeContent/HomeCategory'
 import HomeMessage from '../components/HomeContent/HomeMessage'
 import HomeBanner from '../components/HomeContent/HomeBanner'
 import HomeHighlight from '../components/HomeContent/HomeHighlight'
+import HomeCertification from '../components/HomeContent/HomeCertification'
+import HomeBenefits from '../components/HomeContent/HomeBenefits'
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
       <HomeMessage />
       <HomeBanner />
       <HomeHighlight />
+      <HomeCertification />
+      <HomeBenefits />
     </div>
   )
 }
