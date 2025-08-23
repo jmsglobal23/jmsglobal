@@ -2,7 +2,7 @@ import CategoryImg1 from '../assets/frozen-fruits.jpg'
 import CategoryImg2 from '../assets/vegitables.jpg'
 import CategoryImg3 from '../assets/basmati.jpg'
 import CategoryImg4 from '../assets/nonbasmati.jpg'
-import CategoryImg5 from '../assets/jaggery.jpg'
+import CategoryImg5 from '../assets/jaggery.jpeg'
 
 export const Category = [
   {

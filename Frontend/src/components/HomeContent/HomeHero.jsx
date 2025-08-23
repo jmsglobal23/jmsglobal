@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import Hero1 from '../../assets/hero1.jpg';
-import Hero2 from '../../assets/hero2.jpg';
-import Hero3 from '../../assets/hero3.jpg';
+import Hero1 from '../../assets/hero1.png';
+import Hero2 from '../../assets/hero2.png';
+import Hero3 from '../../assets/hero3.png';
 
 const HomeHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

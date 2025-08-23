@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaRocket, FaAward, FaGlobe, FaUsers, FaHandshake, FaChartLine } from 'react-icons/fa';
 import Logo from '../../assets/jms-logo.png';
-import BGImage from '../../assets/hero1.jpg';
+import BGImage from '../../assets/hero1.png';
 
 const HomeBanner = () => {
   const [currentText, setCurrentText] = useState(0);
