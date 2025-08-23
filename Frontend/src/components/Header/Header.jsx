@@ -74,8 +74,8 @@ const Header = () => {
                       onClick={() => setIsProductsOpen(!isProductsOpen)}
                       className={`flex items-center !py-2 ${
                         location.pathname.startsWith("/products")
-                          ? 'text-primary-500 font-medium'
-                          : 'text-gray-600 hover:text-primary-500'
+                          ? 'text-emerald-600 font-medium'
+                          : 'text-gray-600 hover:text-emerald-600'
                       } transition-colors duration-300`}
                     >
                       {item.name}
@@ -94,7 +94,7 @@ const Header = () => {
                         <Link
                           key={subItem.id}
                           to={subItem.path}
-                          className="block !px-4 !py-2 text-gray-600 hover:text-primary-500 hover:bg-accent-50 transition-colors duration-200"
+                          className="block !px-4 !py-2 text-gray-600 hover:text-emerald-600 hover:bg-accent-50 transition-colors duration-200"
                           onClick={() => setIsProductsOpen(false)}
                         >
                           {subItem.name}
@@ -107,13 +107,13 @@ const Header = () => {
                     to={item.path}
                     className={`relative !py-2 ${
                       location.pathname === item.path
-                        ? 'text-primary-500 font-medium'
-                        : 'text-gray-600 hover:text-primary-500'
+                        ? 'text-emerald-600 font-medium'
+                        : 'text-gray-600 hover:text-emerald-600'
                     } transition-colors duration-300`}
                   >
                     {item.name}
                     <span
-                      className={`absolute left-0 bottom-0 h-0.5 bg-primary-500 transition-all duration-300 ${
+                      className={`absolute left-0 bottom-0 h-0.5 bg-emerald-600 transition-all duration-300 ${
                         location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
                       }`}
                     ></span>
@@ -127,7 +127,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-primary-500 focus:outline-none transition-colors duration-300"
+              className="text-gray-600 hover:text-emerald-600 focus:outline-none transition-colors duration-300"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -150,7 +150,7 @@ const Header = () => {
                       onClick={() => setIsProductsOpen(!isProductsOpen)}
                       className={`flex items-center justify-between w-full !py-2 ${
                         location.pathname.startsWith("/products")
-                          ? 'text-primary-500 font-medium'
+                          ? 'text-emerald-600 font-medium'
                           : 'text-gray-600'
                       } transition-colors duration-300`}
                       aria-expanded={isProductsOpen}
@@ -170,7 +170,7 @@ const Header = () => {
                           <Link
                             key={subItem.id}
                             to={subItem.path}
-                            className="block !py-2 text-gray-600 hover:text-primary-500 hover:bg-accent-50 transition-colors duration-300"
+                            className="block !py-2 text-gray-600 hover:text-emerald-600 hover:bg-accent-50 transition-colors duration-300"
                             onClick={closeMobileMenu}
                           >
                             {subItem.name}
@@ -184,8 +184,8 @@ const Header = () => {
                     to={item.path}
                     className={`block !py-2 ${
                       location.pathname === item.path
-                        ? 'text-primary-500 font-medium'
-                        : 'text-gray-600 hover:text-primary-500'
+                        ? 'text-emerald-600 font-medium'
+                        : 'text-gray-600 hover:text-emerald-600'
                     } transition-colors duration-300`}
                     onClick={closeMobileMenu}
                   >

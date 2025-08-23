@@ -90,7 +90,7 @@ const HomeHero = () => {
               <p className="text-xl md:text-2xl !mb-8 !max-w-2xl !mx-auto">
                 {slide.description}
               </p>
-              <button className="bg-[#238c3c] hover:bg-[#238c4d] cursor-pointer text-white font-semibold !py-3 !px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
+              <button className="bg-emerald-600 hover:bg-emerald-400 cursor-pointer text-white font-semibold !py-3 !px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
                 {slide.buttonText}
               </button>
             </div>
@@ -122,7 +122,7 @@ const HomeHero = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-1 transition-all duration-500 ease-in-out cursor-pointer rounded-full ${
-              index === currentSlide ? '!w-8 bg-green-500' : '!w-4 bg-white bg-opacity-50 hover:bg-opacity-75'
+              index === currentSlide ? '!w-8 bg-emerald-600' : '!w-4 bg-white bg-opacity-50 hover:bg-opacity-75'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
