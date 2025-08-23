@@ -110,7 +110,7 @@ const HomeMessage = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 !mb-4 text-center transition-colors duration-300 group-hover:text-gray-800">
+                <h3 className="text-2xl font-bold text-emerald-600 !mb-4 text-center transition-colors duration-300 group-hover:text-gray-800">
                   {card.title}
                 </h3>
 
@@ -127,7 +127,7 @@ const HomeMessage = () => {
                       className="flex items-center opacity-90 transform transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-1"
                       style={{ transitionDelay: `${featureIndex * 100 + 300}ms` }}
                     >
-                      <span className={`w-8 h-8 rounded-full bg-${card.bgColor}-100 flex items-center justify-center mr-3 group-hover:bg-${card.bgColor}-200 transition-colors duration-300`}>
+                      <span className={`w-8 h-8 rounded-full bg-${card.bgColor}-100 flex items-center justify-center mr-3 group-hover:bg-${card.bgColor}-200 transition-colors duration-300 text-emerald-600`}>
                         {getIcon(featureIndex)}
                       </span>
                       <span className="text-gray-700 text-sm font-medium">{feature}</span>

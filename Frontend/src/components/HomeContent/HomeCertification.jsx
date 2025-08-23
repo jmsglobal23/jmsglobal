@@ -7,6 +7,7 @@ import Company4 from '../../assets/certificate/gst.png'
 import Company5 from '../../assets/certificate/halal.png'
 import Company6 from '../../assets/certificate/icegate_port.png'
 import Company7 from '../../assets/certificate/MSME.png'
+import Company8 from '../../assets/certificate/iso.png'
 
 const HomeCertification = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,6 +24,7 @@ const HomeCertification = () => {
     { id: 5, name: "Sustainable Farming", image: Company5 },
     { id: 6, name: "Quality Assurance", image: Company6 },
     { id: 7, name: "HACCP Certified", image: Company7 },
+    { id: 8, name: "ISO Certified", image: Company8 },
   ];
 
   return (

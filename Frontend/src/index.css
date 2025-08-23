@@ -10,3 +10,51 @@
   max-width: 1200px;
   margin: 0px auto;
 }
+
+/* Background zoom animation */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hero-zoom {
+  animation: zoomInOut 12s ease-in-out infinite;
+}
+
+/* Fade down for title */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInDown {
+  animation: fadeInDown 1.2s ease-out forwards;
+}
+
+/* Fade up for breadcrumb */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
