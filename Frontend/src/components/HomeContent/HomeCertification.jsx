@@ -79,10 +79,6 @@ const HomeCertification = () => {
                   <FaAward className="text-xs" />
                 </div>
               </div>
-              {/* Title */}
-              <p className="mt-4 text-sm md:text-base font-medium text-gray-700 group-hover:text-emerald-600 transition-colors duration-500">
-                {cert.name}
-              </p>
             </div>
           ))}
         </div>

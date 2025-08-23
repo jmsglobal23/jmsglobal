@@ -69,7 +69,7 @@ const HomeBenefits = () => {
 
           {/* Timeline */}
           <div className="relative">
-            <div className="absolute left-5 top-0 bottom-0 w-1 bg-green-200 hidden md:block"></div>
+            <div className="absolute left-5 top-0 bottom-0 w-1 bg-green-200"></div>
             <div className="!space-y-10">
               {benefits.map((benefit, index) => (
                 <div
