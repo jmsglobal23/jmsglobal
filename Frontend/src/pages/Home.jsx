@@ -6,6 +6,7 @@ import HomeBanner from '../components/HomeContent/HomeBanner'
 import HomeHighlight from '../components/HomeContent/HomeHighlight'
 import HomeCertification from '../components/HomeContent/HomeCertification'
 import HomeBenefits from '../components/HomeContent/HomeBenefits'
+import Testimonials from '../components/Others/Testimonials'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <HomeHighlight />
       <HomeCertification />
       <HomeBenefits />
+      <Testimonials />
     </div>
   )
 }
