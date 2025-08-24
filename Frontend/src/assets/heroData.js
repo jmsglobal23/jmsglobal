@@ -1,4 +1,5 @@
 import AboutBG from './aboutbg.jpg'
+import EventBG from './eventbg.jpg'
 import ContactBG from './contactbg.jpg'
 
 export const aboutHero = {
@@ -7,8 +8,14 @@ export const aboutHero = {
   HeroImage: AboutBG,
 };
 
+export const eventHero = {
+  id: 2,
+  title: "Events",
+  HeroImage: EventBG,
+};
+
 export const contactHero = {
-  id: 1,
+  id: 3,
   title: "Contact Us",
   HeroImage: ContactBG,
 };

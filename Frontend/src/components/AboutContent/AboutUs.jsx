@@ -39,133 +39,127 @@ const AboutUs = () => {
 
       <div className="container !mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Image Column - Left */}
-          <div className={`flex-1 transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              {/* Background Image with Dim Effect */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${AboutImg})`,
-                  filter: 'brightness(0.7) contrast(1.1)'
-                }}
-              >
-                {/* Gradient overlay for better dim effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
-              </div>
+          
+          {/* Image Column */}
+          <div className={`flex-1 w-full transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+            <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+              {/* Background Image */}
+              <img 
+                src={AboutImg} 
+                alt="About JMS"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: 'brightness(0.7) contrast(1.1)' }}
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
               
-              {/* Logo Overlay - Centered */}
+              {/* Logo Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white/20 backdrop-blur-sm !p-8 rounded-2xl border border-white/30 transform hover:scale-105 transition-transform duration-700">
-                  <div className="bg-white !p-6 rounded-xl shadow-2xl">
+                <div className="bg-white/20 backdrop-blur-sm !p-6 sm:!p-8 rounded-2xl border border-white/30 transform hover:scale-105 transition-transform duration-700">
+                  <div className="bg-white !p-4 sm:!p-6 rounded-xl shadow-2xl">
                     <img 
                       src={Logo} 
                       alt="JMS Global Exporters" 
-                      className="w-48 h-auto !mx-auto"
+                      className="w-32 sm:w-40 md:w-48 h-auto !mx-auto"
                     />
-                    <div className="text-center !mt-4">
-                      <p className="text-sm text-gray-600 font-semibold">Since 2019</p>
+                    <div className="text-center !mt-3">
+                      <p className="text-xs sm:text-sm text-gray-600 font-semibold">Since 2019</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Stats Cards - Positioned INSIDE the container */}
-              <div className="absolute bottom-4 left-4 bg-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300 z-10">
+              {/* Floating Stats */}
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-white rounded-xl shadow-lg !p-3 sm:!p-4 transform hover:scale-105 transition-transform duration-300 z-10">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-emerald-600">04+</div>
-                  <div className="text-sm text-gray-600">Years Experience</div>
+                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">04+</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Years Experience</div>
                 </div>
               </div>
 
-              <div className="absolute top-4 right-4 bg-emerald-500 text-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300 z-10">
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-emerald-500 text-white rounded-xl shadow-lg !p-3 sm:!p-4 transform hover:scale-105 transition-transform duration-300 z-10">
                 <div className="text-center">
-                  <div className="text-2xl font-bold">12+</div>
-                  <div className="text-sm">Countries Served</div>
+                  <div className="text-lg sm:text-2xl font-bold">12+</div>
+                  <div className="text-xs sm:text-sm">Countries Served</div>
                 </div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-4 left-4 w-8 h-8 bg-emerald-400 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute bottom-4 right-4 w-6 h-6 bg-amber-400 rounded-full opacity-20 animate-pulse animation-delay-2000"></div>
+              {/* Decorative Pulses */}
+              <div className="absolute top-4 left-4 w-6 h-6 sm:w-8 sm:h-8 bg-emerald-400 rounded-full opacity-20 animate-pulse"></div>
+              <div className="absolute bottom-4 right-4 w-4 h-4 sm:w-6 sm:h-6 bg-amber-400 rounded-full opacity-20 animate-pulse animation-delay-2000"></div>
             </div>
           </div>
 
-          {/* Content Column - Right */}
+          {/* Content Column */}
           <div className={`flex-1 transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
             <div className="text-left">
               {/* Badge */}
-              <div className="inline-flex items-center !px-4 !py-2 bg-emerald-100 rounded-full !mb-6">
+              <div className="inline-flex items-center !px-3 !py-1.5 sm:!px-4 sm:!py-2 bg-emerald-100 rounded-full !mb-4 sm:!mb-6">
                 <FaSeedling className="text-emerald-600 !mr-2" />
-                <span className="text-sm font-medium text-emerald-700">Trusted Since 2019</span>
+                <span className="text-xs sm:text-sm font-medium text-emerald-700">Trusted Since 2019</span>
               </div>
 
               {/* Title */}
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 !mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 !mb-4 sm:!mb-6">
                 About <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-500">JMS Global Exporters</span>
               </h2>
 
               {/* Description */}
-              <div className="!space-y-4 !mb-8">
-                <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="!space-y-3 sm:!space-y-4 !mb-6 sm:!mb-8">
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   We are a premier supplier of fresh fruits and vegetables, delivering premium-quality produce 
-                  directly from farms to destinations worldwide. From crisp, vibrant vegetables to succulent, 
-                  juicy fruits, we guarantee freshness, reliability, and punctual delivery for businesses 
-                  and households across the globe.
+                  directly from farms to destinations worldwide.
                 </p>
-
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   At JMS Global Exporters, we specialize in providing fresh, superior-quality agricultural 
-                  products sourced directly from certified farms. With an unwavering commitment to excellence 
-                  and timely distribution, we cater to a diverse clientele — including retail chains, 
-                  supermarkets, hospitality establishments, restaurants, and individual consumers.
+                  products sourced directly from certified farms.
                 </p>
               </div>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-2 gap-4 !mb-8">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 !mb-6 sm:!mb-8">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-center bg-white rounded-lg !p-3 shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 !mr-3">
+                  <div key={index} className="flex items-center bg-white rounded-lg !p-2 sm:!p-3 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 !mr-2 sm:!mr-3">
                       {feature.icon}
                     </div>
-                    <span className="text-sm font-medium text-gray-800">{feature.text}</span>
+                    <span className="text-xs sm:text-sm font-medium text-gray-800">{feature.text}</span>
                   </div>
                 ))}
               </div>
 
               {/* Why Choose Us */}
-              <div className="bg-emerald-50 rounded-xl !p-6 !mb-8">
-                <h4 className="font-semibold text-emerald-800 !mb-4 flex items-center">
+              <div className="bg-emerald-50 rounded-xl !p-4 sm:!p-6 !mb-6 sm:!mb-8">
+                <h4 className="font-semibold text-emerald-800 !mb-3 sm:!mb-4 flex items-center">
                   <FaCheckCircle className="!mr-2 text-emerald-600" />
                   The JMS Global Exporters Advantages
                 </h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-3"></div>
+                <ul className="space-y-1.5 sm:space-y-2">
+                  <li className="flex items-center text-xs sm:text-sm text-gray-700">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-2 sm:!mr-3"></div>
                     Direct sourcing from certified farms ensures maximum freshness
                   </li>
-                  <li className="flex items-center text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-3"></div>
+                  <li className="flex items-center text-xs sm:text-sm text-gray-700">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-2 sm:!mr-3"></div>
                     Rigorous quality control at every stage of the supply chain
                   </li>
-                  <li className="flex items-center text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-3"></div>
+                  <li className="flex items-center text-xs sm:text-sm text-gray-700">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-2 sm:!mr-3"></div>
                     Sustainable and ethical farming practices
                   </li>
-                  <li className="flex items-center text-sm text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-3"></div>
+                  <li className="flex items-center text-xs sm:text-sm text-gray-700">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full !mr-2 sm:!mr-3"></div>
                     Global logistics expertise for seamless international delivery
                   </li>
                 </ul>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <button className="!px-8 !py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1 cursor-pointer text-sm sm:text-base">
                   Discover Our Products <FaTruck className="!ml-2" />
                 </button>
-                <button className="!px-8 !py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300 cursor-pointer">
+                <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300 cursor-pointer text-sm sm:text-base">
                   Contact Our Team <FaUsers className="!ml-2" />
                 </button>
               </div>
