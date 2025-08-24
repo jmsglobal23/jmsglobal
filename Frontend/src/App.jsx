@@ -8,6 +8,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Events from './pages/event/Events'
 import EventDetail from './pages/event/EventDetail'
+import ProductDetails from './pages/ProductDetails'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/events/:id" element={<EventDetail />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/category/:categoryName" element={<CategoryPage />} />
+      <Route path="/product/:productSlug" element={<ProductDetails />} />
     </Routes>
     <FloatingContactIcons />
     </BrowserRouter>

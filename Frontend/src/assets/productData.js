@@ -4,6 +4,12 @@ import CategoryImg3 from '../assets/basmati.jpg'
 import CategoryImg4 from '../assets/nonbasmati.jpg'
 import CategoryImg5 from '../assets/jaggery.jpeg'
 
+import FrozenMangoImg from '../assets/products/frozenFruits/frozen-mango.jpg'
+import FrozenStrawberryImg1 from '../assets/products/frozenFruits/straw1.jpg'
+import FrozenStrawberryImg2 from '../assets/products/frozenFruits/straw2.jpg'
+import FrozenStrawberryImg3 from '../assets/products/frozenFruits/straw3.jpg'
+import FrozenStrawberryImg4 from '../assets/products/frozenFruits/straw4.jpg'
+
 export const Category = [
   {
     id: 1,
@@ -34,51 +40,42 @@ export const Category = [
 
 export const Products = [
   {
-    "id": 101,
-    "name": "Apple",
-    "price": 120,
-    "unit": "per kg",
-    "image": "/images/products/apple.jpg",
-    "categoryId": 1
+    id: 101,
+    name: "FROZEN MANGO",
+    slug: "frozen-mango",
+    feature: "MANGO(MANGIFERA INDICA)MEMBER OF CASHEW FAMILY(ANACARDIACASE)& ONE OF THE MOST IMPORTANT & WIDELY CULTIVATED FRUITS OF THE TROPICAL WORLD.MANGOES ARE RICH SOURCE OF VITAMIN A,C & D INDIA RANKS 1st AMONG WORLD'S MANGO PRODUCING COUNTRIES FOR ABOUT 50%OF THE WORLD'S MANGO PRODUCTION.MANGO IS A LOW-CALORIE FRUIT THAT IS HIGH IN FIBRE & A GREAT SOURCE OF VITAMIN E.MANGOES ARE GOOD SOURCE OF ANTIOXIDANTS CONTAINING CERTAIN PHYTOCHEMICALS SUCH AS GALLOTANNINS & MANGIFERIN WHICH HAVE BEEN STUDIED FOR THEIR HEALTH BENEFITS.CONSUMING MANGOES CAN HELP STRENGTHEN & PROTECT THE BODY & PROMOTES EYE HEALTH,PREVENT CANCER,CHOLESTROL LEVEL.MANGOES ORIGINATED IN INDIA OVER 4000 YEARS AGO,MANGOES SPREAD GRADUALLY THROUGHOUT ASIA & THEN THE REST OF THE WORLD.OVER 500 VARITIES OF MANGOES ARE FOUND IN INDIA,ALPHONSO,KESAR,BADAMI,AMRAPALI,TOTAPURI.",
+    descTitle: "PREVENTION AND DAMAGE CONTROL OF FROZEN MANGOES",
+    description: [
+      "1.SORTING-REMOVING DEFECTIVE MANGOES ENSURING UNIFORM QUALITY OF END PRODUCTS.",
+      "2.WASHING-THE FRUIT WASHING MACHINE WASHES & CKEAN THE SURFACE OF THE MANGO REMOVING FOREIGN MATTER SUCH AS LEAVES & RESIDUES.",
+      "3.CUTTING-THE MANGOES ARE USUALLY IN THE FORM OF HALVES ACCORDING TO THE CUSTOMER NEEDS,THE MANGOES CAN BE FURTHER CUT INTO DICES,CHUNKS & SLICES.",
+      "4.PRE-COOLING -BEFORE FREEZING THE CUT MANGOES ARE COOLED DOWN BY COOLER'S RETANINING THE APPEARANCE & TEXTURE OF THE MANGOES WHILE  SAVING ENERGY FOR THE FREEZING PROCESS.",
+      "5.FREEZING-INDUSTRIAL IQF TUNNEL FREEZERS ARE USED TO QUICKLY FREEZE THE MANGOES WITH ADVANCE TECHNOLOGY & INNOVATIVE DESIGN.IQF FREEZING SYSTEMS CAN RAPIDLY FREEZE PREMIUM MANGOES.",
+      "6.PACKING-IT IS IMPORTANT TO OBTAIN QUALITY BOXES,OTHERWISE THEY MAY COLLAPSE DURING TRANSPOTATION.",
+    ],
+    images: [
+      FrozenMangoImg,
+    ],
+    categoryId: 1,
+    categoryName: "Frozen Fruits"
   },
   {
-    "id": 102,
-    "name": "Banana",
-    "price": 60,
-    "unit": "per dozen",
-    "image": "/images/products/banana.jpg",
-    "categoryId": 1
+    id: 102,
+    name: "FROZEN STRAWBERRY",
+    slug: "frozen-strawberry",
+    feature: "STRAWBERRY(FRAGARAI X ANANASSA)IS A WIDELY GROWN HYBRID SPECIES OF THE GENUS FRAGARIA IN THE ROSE FAMILY.STRAWBERRY IS APPRECIATED FOR ITS AROMA,BRIGHT RED COLOUR,JUICY TEXTURE & SWEETNESS.TO ASSES THE NURITIONAL VALUE OF FRUIT PRODUCTS A SPECIAL ATTENTION IS PAID TO THE CONTENT OF BIO ANTIOXIDANTS-BIOLOGICALLY ACTIVE SUBSTANCES.THE QUALITY FRUIT IS GIVEN BY MICRONUTRIENS.ANTIOXIANTS PLAYS A PROTECTIVE ROLE IN PREVENTING CARDIOVASCULAR DISEASE,DIABETES,GASTROINTESTINAL DISEASE HAVE A POSOTIVE ROLE IN LIFETIME.",
+    descTitle: "PREVENTION  AND DAMAGE CONTROLL OF FROZEN STRAWBERRY",
+    description: [
+      "1.FREEZING-STRAWBERRY MAY BE FROZEN WHOLE,SLICED,CRUSHED OR PUREED DEPENDING ON THEIR INTENTED USE IN RECIPIES.",
+      "2.ROW COVERS-IT REDUCE EVAPORATIVE COOLING & THE RATE OF COOLING UNDER THE COVER.WHEN USING IRRIGATION & ROW COVERS TO PROTECT AGAINST FROST IRRIGATION & RAW COVERS WORK TOGETHER VERY EFFECTIVELY.",
+    ],
+    images: [
+      FrozenStrawberryImg1,
+      FrozenStrawberryImg2,
+      FrozenStrawberryImg3,
+      FrozenStrawberryImg4,
+    ],
+    categoryId: 1,
+    categoryName: "Frozen Fruits"
   },
-  {
-    "id": 201,
-    "name": "Tomato",
-    "price": 40,
-    "unit": "per kg",
-    "image": "/images/products/tomato.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 202,
-    "name": "Potato",
-    "price": 30,
-    "unit": "per kg",
-    "image": "/images/products/potato.jpg",
-    "categoryId": 2
-  },
-  {
-    "id": 301,
-    "name": "Milk",
-    "price": 50,
-    "unit": "per liter",
-    "image": "/images/products/milk.jpg",
-    "categoryId": 3
-  },
-  {
-    "id": 401,
-    "name": "Wheat",
-    "price": 25,
-    "unit": "per kg",
-    "image": "/images/products/wheat.jpg",
-    "categoryId": 4
-  }
 ]
