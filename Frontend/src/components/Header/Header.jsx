@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logo from '../../assets/jms-logo.png';
+import { Category } from '../../assets/productData'; // Import your category data
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,15 @@ const Header = () => {
   const [isHoveringProducts, setIsHoveringProducts] = useState(false);
   const productsRef = useRef(null);
   const location = useLocation();
+
+  // Fetch categories from your API or data source
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // In a real application, you would fetch this from your API
+    // For now, using the imported Category data
+    setCategories(Category);
+  }, []);
 
   // Menu Items with paths
   const menuItems = [
@@ -19,11 +29,11 @@ const Header = () => {
       id: 4,
       name: 'Products',
       path: "/products",
-      submenu: [
-        { id: 41, name: 'Product 1', path: "/products/1" },
-        { id: 42, name: 'Product 2', path: "/products/2" },
-        { id: 43, name: 'Product 3', path: "/products/3" },
-      ],
+      submenu: categories.map(category => ({
+        id: category.id,
+        name: category.name,
+        path: `/category/${category.name.toLowerCase().replace(/\s+/g, "-")}`
+      }))
     },
     { id: 5, name: 'Blog', path: "/blog" },
     { id: 6, name: 'Contact', path: "/contact" },
@@ -68,12 +78,12 @@ const Header = () => {
                 onMouseEnter={() => item.name === 'Products' && setIsHoveringProducts(true)}
                 onMouseLeave={() => item.name === 'Products' && setIsHoveringProducts(false)}
               >
-                {item.submenu ? (
+                {item.submenu && item.submenu.length > 0 ? (
                   <>
                     <button
                       onClick={() => setIsProductsOpen(!isProductsOpen)}
                       className={`flex items-center !py-2 ${
-                        location.pathname.startsWith("/products")
+                        location.pathname.startsWith("/products") || location.pathname.startsWith("/category")
                           ? 'text-emerald-600 font-medium'
                           : 'text-gray-600 hover:text-emerald-600'
                       } transition-colors duration-300`}
@@ -94,7 +104,7 @@ const Header = () => {
                         <Link
                           key={subItem.id}
                           to={subItem.path}
-                          className="block !px-4 !py-2 text-gray-600 hover:text-emerald-600 hover:bg-accent-50 transition-colors duration-200"
+                          className="block !px-4 !py-2 text-gray-600 hover:text-emerald-600 hover:bg-gray-50 transition-colors duration-200"
                           onClick={() => setIsProductsOpen(false)}
                         >
                           {subItem.name}
@@ -138,18 +148,18 @@ const Header = () => {
         {/* Mobile Navigation */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            isMenuOpen ? 'max-h-[500px] opacity-100 translate-y-0 !mt-4' : 'max-h-0 opacity-0 -translate-y-4'
+            isMenuOpen ? 'max-h-full opacity-100 translate-y-0 !mt-4' : 'max-h-0 opacity-0 -translate-y-4'
           }`}
         >
           <nav className="flex flex-col !space-y-4 !pb-4">
             {menuItems.map((item) => (
               <div key={item.id}>
-                {item.submenu ? (
+                {item.submenu && item.submenu.length > 0 ? (
                   <>
                     <button
                       onClick={() => setIsProductsOpen(!isProductsOpen)}
                       className={`flex items-center justify-between w-full !py-2 ${
-                        location.pathname.startsWith("/products")
+                        location.pathname.startsWith("/products") || location.pathname.startsWith("/category")
                           ? 'text-emerald-600 font-medium'
                           : 'text-gray-600'
                       } transition-colors duration-300`}
@@ -162,7 +172,7 @@ const Header = () => {
                     </button>
                     <div
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        isProductsOpen ? 'max-h-[200px] opacity-100 translate-y-0 !mt-2' : 'max-h-0 opacity-0 -translate-y-2'
+                        isProductsOpen ? 'max-h-full opacity-100 translate-y-0 !mt-2' : 'max-h-0 opacity-0 -translate-y-2'
                       }`}
                     >
                       <div className="!pl-4 !space-y-2">
@@ -170,7 +180,7 @@ const Header = () => {
                           <Link
                             key={subItem.id}
                             to={subItem.path}
-                            className="block !py-2 text-gray-600 hover:text-emerald-600 hover:bg-accent-50 transition-colors duration-300"
+                            className="block !py-2 text-gray-600 hover:text-emerald-600 hover:bg-gray-50 transition-colors duration-300"
                             onClick={closeMobileMenu}
                           >
                             {subItem.name}

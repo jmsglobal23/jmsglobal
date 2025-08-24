@@ -19,15 +19,15 @@ const HomeHero = () => {
     },
     {
       id: 2,
-      title: "Summer Collection 2023",
-      description: "Check out our new summer collection with exclusive designs and offers.",
+      title: "Huge Global Markets",
+      description: "From Indian Farms to Global Markets – Freshness You Can Trust",
       buttonText: "Shop Now",
       bgImage: Hero2
     },
     {
       id: 3,
-      title: "Special Limited Time Offer",
-      description: "Don't miss our special promotion with discounts up to 50% on selected items.",
+      title: "Premium Quality",
+      description: "Supplying Premium Indian Fruits & Vegetables to the World",
       buttonText: "Learn More",
       bgImage: Hero3
     }
