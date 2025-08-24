@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FaQuoteLeft, FaStar, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';
+import { FaQuoteLeft, FaStar, FaChevronLeft, FaChevronRight, FaMapMarkerAlt } from 'react-icons/fa';
 import User from '../../assets/user.png';
 
 const AboutTestimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [cardsPerSlide, setCardsPerSlide] = useState(3); // default desktop
 
   const testimonials = [
     {
@@ -41,22 +42,30 @@ const AboutTestimonials = () => {
     }
   ];
 
-  const cardsPerSlide = 3; // Always show 3 cards
+  // Handle responsiveness (1 - mobile, 2 - tablet, 3 - desktop)
+  useEffect(() => {
+    const updateCardsPerSlide = () => {
+      if (window.innerWidth < 640) {
+        setCardsPerSlide(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsPerSlide(2);
+      } else {
+        setCardsPerSlide(3);
+      }
+    };
+
+    updateCardsPerSlide();
+    window.addEventListener('resize', updateCardsPerSlide);
+    return () => window.removeEventListener('resize', updateCardsPerSlide);
+  }, []);
+
   const totalSlides = Math.ceil(testimonials.length / cardsPerSlide);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  const goToSlide = (index) => setCurrentSlide(index);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
-  // Group testimonials into slides of 3 cards
+  // Group testimonials dynamically
   const groupedTestimonials = [];
   for (let i = 0; i < testimonials.length; i += cardsPerSlide) {
     groupedTestimonials.push(testimonials.slice(i, i + cardsPerSlide));
@@ -162,10 +171,6 @@ const AboutTestimonials = () => {
                         ? 'bg-gradient-to-r from-emerald-600 to-emerald-400'
                         : 'bg-gray-300'
                     }`}
-                    style={{
-                      width: '100%',
-                      opacity: currentSlide === index ? 1 : 0.5
-                    }}
                   ></div>
                 </div>
               </button>

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AboutBGImage from '../../assets/aboutbg.jpg'
 
-const Hero = ({aboutHero}) => {
-   const heroContent = aboutHero
+const Hero = ({aboutHero, contactHero}) => {
+   const heroContent = aboutHero || contactHero
   return (
     <section className="relative w-full h-[70vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with zoom in/out animation */}
