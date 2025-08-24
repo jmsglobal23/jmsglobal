@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaLeaf, FaTruck, FaAward, FaUsers, FaGlobe, FaSeedling, FaCheckCircle } from 'react-icons/fa';
-import AboutImg from '../../assets/aboutleft.jpg'
+import AboutImg from '../../assets/aboutleft.jpg';
+import Logo from '../../assets/jms_logo.png';
 
 const AboutUs = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,26 +41,44 @@ const AboutUs = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Image Column - Left */}
           <div className={`flex-1 transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-700">
-                <img 
-                  src={AboutImg} 
-                  alt="JMS Global Exporters"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              {/* Background Image with Dim Effect */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${AboutImg})`,
+                  filter: 'brightness(0.7) contrast(1.1)'
+                }}
+              >
+                {/* Gradient overlay for better dim effect */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
+              </div>
+              
+              {/* Logo Overlay - Centered */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-sm !p-8 rounded-2xl border border-white/30 transform hover:scale-105 transition-transform duration-700">
+                  <div className="bg-white !p-6 rounded-xl shadow-2xl">
+                    <img 
+                      src={Logo} 
+                      alt="JMS Global Exporters" 
+                      className="w-48 h-auto !mx-auto"
+                    />
+                    <div className="text-center !mt-4">
+                      <p className="text-sm text-gray-600 font-semibold">Since 2019</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Floating Stats Cards */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300">
+              {/* Floating Stats Cards - Positioned INSIDE the container */}
+              <div className="absolute bottom-4 left-4 bg-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300 z-10">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-emerald-600">04+</div>
                   <div className="text-sm text-gray-600">Years Experience</div>
                 </div>
               </div>
 
-              <div className="absolute -top-6 -right-6 bg-emerald-500 text-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300">
+              <div className="absolute top-4 right-4 bg-emerald-500 text-white rounded-xl shadow-lg !p-4 transform hover:scale-105 transition-transform duration-300 z-10">
                 <div className="text-center">
                   <div className="text-2xl font-bold">12+</div>
                   <div className="text-sm">Countries Served</div>
@@ -87,7 +106,7 @@ const AboutUs = () => {
               </h2>
 
               {/* Description */}
-              <div className="space-y-4 !mb-8">
+              <div className="!space-y-4 !mb-8">
                 <p className="text-lg text-gray-700 leading-relaxed">
                   We are a premier supplier of fresh fruits and vegetables, delivering premium-quality produce 
                   directly from farms to destinations worldwide. From crisp, vibrant vegetables to succulent, 
@@ -143,10 +162,10 @@ const AboutUs = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
-                <button className="!px-8 !py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1">
+                <button className="!px-8 !py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1 cursor-pointer">
                   Discover Our Products <FaTruck className="!ml-2" />
                 </button>
-                <button className="!px-8 !py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300">
+                <button className="!px-8 !py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300 cursor-pointer">
                   Contact Our Team <FaUsers className="!ml-2" />
                 </button>
               </div>
