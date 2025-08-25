@@ -35,7 +35,7 @@ const Header = () => {
         path: `/category/${category.name.toLowerCase().replace(/\s+/g, "-")}`
       }))
     },
-    { id: 5, name: 'Blog', path: "/blog" },
+    { id: 5, name: 'Blog', path: "/blogs" },
     { id: 6, name: 'Contact', path: "/contact" },
   ];
 

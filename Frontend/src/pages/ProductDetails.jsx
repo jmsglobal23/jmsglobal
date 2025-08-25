@@ -73,7 +73,7 @@ const ProductDetails = () => {
             </li>
             <li className="flex items-center">
               <span className="!mx-2 text-gray-400">/</span>
-              <Link to="/products" className="text-emerald-600 hover:text-emerald-700 transition-colors">
+              <Link to="#" className="text-emerald-600 hover:text-emerald-700 transition-colors">
                 Products
               </Link>
             </li>
@@ -185,7 +185,7 @@ const ProductDetails = () => {
                   <div className="!p-4">
                     <h3 className="text-lg font-semibold text-gray-900 !mb-2">{relatedProduct.name}</h3>
                     <Link 
-                      to={`/products/${relatedProduct.slug}`}
+                      to={`/product/${relatedProduct.slug}`}
                       className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors"
                     >
                       View Product

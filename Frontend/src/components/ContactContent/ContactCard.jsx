@@ -23,7 +23,7 @@ const ContactCard = () => {
       id: 3,
       icon: <FaMapMarkerAlt className="text-5xl text-emerald-600" />,
       title: "Office Address",
-      details: "123 Export Street, Trade District",
+      details: "Solapur, Maharashtra, India",
       description: "Plot no 15, Pravin Nagar, Dahitane, Solapur, Maharashtra, India",
       color: "from-emerald-600 to-emerald-400",
     }

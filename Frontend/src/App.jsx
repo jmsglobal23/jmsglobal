@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Events from './pages/event/Events'
 import EventDetail from './pages/event/EventDetail'
 import ProductDetails from './pages/ProductDetails'
+import Blog from './pages/blog/Blog'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/about" element={<About />} />
       <Route path="/events" element={<Events />} />
       <Route path="/events/:id" element={<EventDetail />} />
+      <Route path="/blogs" element={<Blog />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/category/:categoryName" element={<CategoryPage />} />
       <Route path="/product/:productSlug" element={<ProductDetails />} />
