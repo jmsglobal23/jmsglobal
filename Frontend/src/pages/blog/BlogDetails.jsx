@@ -5,7 +5,7 @@ import { FaCalendarAlt, FaUser, FaClock, FaArrowLeft, FaShare, FaLeaf, FaBookOpe
 
 const BlogDetails = () => {
   const { blogSlug } = useParams();
-  
+
   // Find the blog by slug
   const blog = blogData.find(b => b.slug === blogSlug);
 
@@ -31,8 +31,8 @@ const BlogDetails = () => {
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center !px-4">
         <div className="text-center bg-white !p-8 rounded-2xl shadow-lg max-w-md w-full">
           <h2 className="text-2xl font-bold text-gray-800 !mb-4">Blog post not found</h2>
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors"
           >
             <FaArrowLeft className="!mr-2" />
@@ -130,7 +130,7 @@ const BlogDetails = () => {
                       <p className="text-sm">{formatDate(blog.date)}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center text-gray-700">
                     <FaUser className="text-emerald-600 !mr-3 text-lg flex-shrink-0" />
                     <div>
@@ -182,7 +182,7 @@ const BlogDetails = () => {
                 </div>
 
                 {/* Main Content */}
-                <div 
+                <div
                   className="custom-blog-content"
                   dangerouslySetInnerHTML={{ __html: blog.content }}
                 />
@@ -245,52 +245,255 @@ const BlogDetails = () => {
       {/* Custom CSS for blog content styling */}
       <style>
         {`
-          .custom-blog-content h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #065f46;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #10b981;
-          }
-          
-          .custom-blog-content p {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: #374151;
-            margin-bottom: 1.5rem;
-          }
-          
-          .custom-blog-content ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-bottom: 2rem;
-          }
-          
-          .custom-blog-content li {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.125rem;
-            line-height: 1.6;
-            color: #374151;
-          }
-          
-          .custom-blog-content li:before {
-            content: "•";
-            color: #10b981;
-            font-weight: bold;
-            position: absolute;
-            left: 1rem;
-            font-size: 1.5rem;
-          }
-          
-          .custom-blog-content strong {
-            color: #065f46;
-            font-weight: 600;
-          }
-        `}
+  .custom-blog-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #065f46;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #10b981;
+  }
+  
+  .custom-blog-content p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 1.5rem;
+  }
+  
+  .custom-blog-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .custom-blog-content li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #374151;
+  }
+  
+  .custom-blog-content li:before {
+    content: "•";
+    color: #10b981;
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .custom-blog-content strong {
+    color: #065f46;
+    font-weight: 600;
+  }
+
+  /* Beautiful Blockquote Styling */
+  .custom-blog-content blockquote {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 4px solid #10b981;
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-blog-content blockquote:before {
+    content: """;
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    color: #10b981;
+    opacity: 0.3;
+    position: absolute;
+    top: -1rem;
+    left: 0.5rem;
+    line-height: 1;
+  }
+
+  .custom-blog-content blockquote:after {
+    content: """;
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    color: #10b981;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -2rem;
+    right: 0.5rem;
+    line-height: 1;
+  }
+
+  .custom-blog-content blockquote p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #065f46;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .custom-blog-content blockquote cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: #059669;
+    text-align: right;
+    font-size: 1rem;
+  }
+
+  .custom-blog-content blockquote cite:before {
+    content: "— ";
+  }
+
+  /* Beautiful Table Styling */
+  .custom-blog-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-blog-content thead {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+
+  .custom-blog-content th {
+    color: #065f46;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    border-bottom: 2px solid #047857;
+  }
+
+  .custom-blog-content th:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  .custom-blog-content th:last-child {
+    border-top-right-radius: 12px;
+  }
+
+  .custom-blog-content td {
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .custom-blog-content tr:last-child td {
+    border-bottom: none;
+  }
+
+  .custom-blog-content tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+  }
+
+  .custom-blog-content tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+  }
+
+  .custom-blog-content tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  .custom-blog-content tbody tr:hover {
+    background-color: #f0fdf4;
+  }
+
+  .custom-blog-content tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+
+  .custom-blog-content tbody tr:nth-child(even):hover {
+    background-color: #ecfdf5;
+  }
+
+  /* Responsive Table */
+  @media (max-width: 768px) {
+    .custom-blog-content table {
+      display: block;
+      overflow-x: auto;
+    }
+    
+    .custom-blog-content th,
+    .custom-blog-content td {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  /* Code and Preformatted Text */
+  .custom-blog-content code {
+    background-color: #f0fdf4;
+    color: #065f46;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+  }
+
+  .custom-blog-content pre {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-blog-content pre code {
+    background: transparent;
+    color: #d1fae5;
+    padding: 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  /* Images within content */
+  .custom-blog-content img {
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Horizontal Rule */
+  .custom-blog-content hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #10b981 50%, transparent 100%);
+    margin: 2.5rem 0;
+  }
+
+  /* Definition Lists */
+  .custom-blog-content dl {
+    margin: 1.5rem 0;
+  }
+
+  .custom-blog-content dt {
+    font-weight: 600;
+    color: #065f46;
+    margin-top: 1rem;
+  }
+
+  .custom-blog-content dd {
+    margin-left: 1.5rem;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+`}
       </style>
     </div>
   );
