@@ -44,7 +44,7 @@ const HomeCategory = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
                 {/* Title - slides up */}
-                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg sm:text-xl md:text-3xl font-bold transition-all duration-500 group-hover:bottom-8">
+                <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-2xl md:text-3xl font-bold transition-all duration-500 group-hover:bottom-8">
                   {category.name}
                 </h3>
               </div>

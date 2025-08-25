@@ -36,29 +36,26 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      position: "Restaurant Owner",
-      city: "New York, USA",
-      message: "JMS Global Exporters has been our trusted supplier for over two years. Their fruits and vegetables always arrive fresh and of the highest quality. Their customer service is exceptional!",
-      rating: 5,
+      name: "Mr. Carlos Mendoza",
+      position: "Onion Importer",
+      city: "Philippines",
+      message: "The onions arrived today and I must say - the freshness is outstanding. They're firm, clean, and have that natural aroma our local buyers appreciate. Even after the long journey, not a single mesh bag was damaged. This quality is far better than what we've received from other suppliers before. Looking forward to the next shipment!",
       image: User
     },
     {
       id: 2,
-      name: "Michael Chen",
-      position: "Grocery Chain Manager",
-      city: "Toronto, Canada",
-      message: "The consistency in quality and timely delivery from JMS has helped our business grow. Their organic products are always fresh and their pricing is very competitive.",
-      rating: 5,
+      name: "Mr. Khalid",
+      position: "Fresh Fruit Importer",
+      city: "Dubai",
+      message: "We've been importing Indian bananas for the past year, but working with JMS Global Exporters was a completely different experience. The quality, consistency, and commitment they deliver are unmatched. Every shipment has arrived on time and in perfect condition. Highly recommended for anyone seeking reliable fresh produce from India.",
       image: User
     },
     {
       id: 3,
-      name: "Elena Rodriguez",
-      position: "Food Import Director",
-      city: "Madrid, Spain",
-      message: "We've been importing from JMS for 3 years and they never disappoint. Their attention to packaging and logistics ensures our products arrive in perfect condition every time.",
-      rating: 5,
+      name: "Mr. Pieter van Dijk",
+      position: "Fresh Produce Importer",
+      city: "Netherlands",
+      message: "Just wanted to say the fruits arrived in perfect condition the freshness is unbelievable, and the taste is exactly what our customers expect here in the Netherlands. The bananas were naturally sweet, and the pomegranates had such rich flavor. Even after the long transit, everything was as fresh as if it was picked yesterday. We're really happy with this quality, keep it up!",
       image: User
     }
   ];

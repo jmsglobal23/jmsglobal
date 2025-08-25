@@ -5,6 +5,7 @@ import { GiFruitBowl } from "react-icons/gi";
 import { FaTruck } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaMoneyCheck } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const HomeHighlight = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -188,12 +189,16 @@ const HomeHighlight = () => {
               Join hundreds of satisfied customers who have experienced our seamless process and premium products
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="!px-6 !py-3  rounded-lg font-semibold flex items-center hover:shadow-xl border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 transform cursor-pointer">
-                About JMS <FaRocket className="!ml-2" />
-              </button>
-              <button className="!px-6 !py-3 bg-emerald-600 text-white backdrop-blur-md rounded-lg font-semibold hover:shadow-xl hover:bg-gray-200 hover:border-2 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 cursor-pointer">
-                Contact Our Team <FaHandshake className="!ml-2 inline" />
-              </button>
+              <Link to="/about">
+                <button className="!px-6 !py-3  rounded-lg font-semibold flex items-center hover:shadow-xl border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 transform cursor-pointer">
+                  About JMS <FaRocket className="!ml-2" />
+                </button>
+              </Link>
+              <Link to="/contact">
+                <button className="!px-6 !py-3 bg-emerald-600 text-white backdrop-blur-md rounded-lg font-semibold hover:shadow-xl hover:bg-white hover:border-2 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 cursor-pointer">
+                  Contact Our Team <FaHandshake className="!ml-2 inline" />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

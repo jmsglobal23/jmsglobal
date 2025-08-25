@@ -3,25 +3,28 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Hero1 from '../../assets/hero1.png';
 import Hero2 from '../../assets/hero2.png';
 import Hero3 from '../../assets/hero3.png';
+import { Link } from 'react-router-dom';
 
 const HomeHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('next');
   const [isMobile, setIsMobile] = useState(false);
-  
+
   const slides = [
     {
       id: 1,
       title: "Find Perfect Export Company",
       description: "To deliver Safe,Hygenic And Healthy Food To Our Consumers",
       buttonText: "Get Started",
+      link: "/contact",
       bgImage: Hero1
     },
     {
       id: 2,
       title: "Huge Global Markets",
       description: "From Indian Farms to Global Markets – Freshness You Can Trust",
-      buttonText: "Shop Now",
+      buttonText: "Our Blogs",
+      link: "/blog",
       bgImage: Hero2
     },
     {
@@ -29,6 +32,7 @@ const HomeHero = () => {
       title: "Premium Quality",
       description: "Supplying Premium Indian Fruits & Vegetables to the World",
       buttonText: "Learn More",
+      link: "/about",
       bgImage: Hero3
     }
   ];
@@ -38,10 +42,10 @@ const HomeHero = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
@@ -52,7 +56,7 @@ const HomeHero = () => {
     const interval = setInterval(() => {
       goToNextSlide();
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, [slides.length]);
 
@@ -89,13 +93,13 @@ const HomeHero = () => {
           className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${getSlidePosition(index)}`}
         >
           {/* Background image with overlay */}
-          <img 
-            src={slide.bgImage} 
+          <img
+            src={slide.bgImage}
             alt={`Slide ${index + 1}`}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/64 bg-opacity-50"></div>
-          
+
           {/* Content */}
           <div className="relative flex items-center justify-center h-full text-center text-white">
             <div className="!max-w-4xl !px-4 transform transition-all duration-1000 ease-in-out">
@@ -105,40 +109,41 @@ const HomeHero = () => {
               <p className="text-xl md:text-2xl !mb-8 !max-w-2xl !mx-auto">
                 {slide.description}
               </p>
-              <button className="bg-emerald-600 hover:bg-emerald-400 cursor-pointer text-white font-semibold !py-3 !px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
-                {slide.buttonText}
-              </button>
+              <Link to={`${slide.link}`}>
+                <button className="bg-emerald-600 hover:bg-emerald-400 cursor-pointer text-white font-semibold !py-3 !px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
+                  {slide.buttonText}
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       ))}
-      
+
       {/* Navigation arrows - hidden on mobile */}
-      <button 
+      <button
         onClick={goToPrevSlide}
         className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Previous slide"
       >
         <FaChevronLeft size={24} />
       </button>
-      
-      <button 
+
+      <button
         onClick={goToNextSlide}
         className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Next slide"
       >
         <FaChevronRight size={24} />
       </button>
-      
+
       {/* Line indicators with green active state */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex !space-x-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1 transition-all duration-500 ease-in-out cursor-pointer rounded-full ${
-              index === currentSlide ? '!w-8 bg-emerald-600' : '!w-4 bg-white bg-opacity-50 hover:bg-opacity-75'
-            }`}
+            className={`h-1 transition-all duration-500 ease-in-out cursor-pointer rounded-full ${index === currentSlide ? '!w-8 bg-emerald-600' : '!w-4 bg-white bg-opacity-50 hover:bg-opacity-75'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

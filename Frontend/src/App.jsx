@@ -11,12 +11,16 @@ import EventDetail from './pages/event/EventDetail'
 import ProductDetails from './pages/ProductDetails'
 import Blog from './pages/blog/Blog'
 import BlogDetails from './pages/blog/BlogDetails'
+import ScrollToTop from './components/Others/ScrollToTop'
+import NotFound from './components/Others/NotFound'
 
 const App = () => {
   return (
     <BrowserRouter>
     <Header />
+    <ScrollToTop />
     <Routes>
+      <Route path="*" element={<NotFound />} />
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/events" element={<Events />} />

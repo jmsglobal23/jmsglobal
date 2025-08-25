@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { blogData } from '../../assets/blogData';
-import { FaCalendarAlt, FaUser, FaClock, FaArrowLeft, FaShare, FaLeaf, FaBookOpen } from 'react-icons/fa';
+import { FaCalendarAlt, FaUser, FaClock, FaArrowLeft, FaShare, FaLeaf, FaBookOpen, FaCheck } from 'react-icons/fa';
 
 const BlogDetails = () => {
   const { blogSlug } = useParams();
+  const [showCopiedMessage, setShowCopiedMessage] = useState(false);
 
   // Find the blog by slug
   const blog = blogData.find(b => b.slug === blogSlug);
@@ -24,6 +25,30 @@ const BlogDetails = () => {
     const wordCount = content.split(' ').length;
     const readingTime = Math.ceil(wordCount / 200);
     return `${readingTime} min read`;
+  };
+
+  // Function to handle sharing
+  const handleShare = () => {
+    const currentUrl = window.location.href;
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(currentUrl)
+      .then(() => {
+        setShowCopiedMessage(true);
+        setTimeout(() => setShowCopiedMessage(false), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback method for copying
+        const textArea = document.createElement('textarea');
+        textArea.value = currentUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setShowCopiedMessage(true);
+        setTimeout(() => setShowCopiedMessage(false), 2000);
+      });
   };
 
   if (!blog) {
@@ -116,9 +141,21 @@ const BlogDetails = () => {
                     <FaBookOpen className="!mr-2" />
                     <span className="font-medium">Article</span>
                   </div>
-                  <button className="flex items-center !px-4 !py-2 bg-emerald-100 text-emerald-700 rounded-lg font-semibold hover:bg-emerald-200 transition-colors">
-                    <FaShare className="!mr-2" />
-                    Share
+                  <button 
+                    onClick={handleShare}
+                    className="flex items-center !px-4 !py-2 bg-emerald-100 text-emerald-700 rounded-lg font-semibold hover:bg-emerald-200 transition-colors relative cursor-pointer"
+                  >
+                    {showCopiedMessage ? (
+                      <>
+                        <FaCheck className="!mr-2" />
+                        Copied!
+                      </>
+                    ) : (
+                      <>
+                        <FaShare className="!mr-2" />
+                        Share
+                      </>
+                    )}
                   </button>
                 </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaRocket, FaAward, FaGlobe, FaUsers, FaHandshake, FaChartLine } from 'react-icons/fa';
 import Logo from '../../assets/jms-logo.png';
 import BGImage from '../../assets/hero1.png';
+import { Link } from 'react-router-dom';
 
 const HomeBanner = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -88,12 +89,16 @@ const HomeBanner = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="!px-6 !py-3  rounded-lg font-semibold flex items-center hover:shadow-xl border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 transform cursor-pointer">
-                Explore Products <FaRocket className="!ml-2" />
-              </button>
-              <button className="!px-6 !py-3 bg-emerald-600 text-white backdrop-blur-md rounded-lg font-semibold hover:shadow-xl hover:bg-gray-200 hover:border-2 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 cursor-pointer">
-                Contact Us <FaHandshake className="!ml-2 inline" />
-              </button>
+              <Link to="/blog">
+                <button className="!px-6 !py-3  rounded-lg font-semibold flex items-center hover:shadow-xl border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 transform cursor-pointer">
+                  Explore more <FaRocket className="!ml-2" />
+                </button>
+              </Link>
+              <Link to="/contact">
+                <button className="!px-6 !py-3 bg-emerald-600 text-white backdrop-blur-md rounded-lg font-semibold hover:shadow-xl hover:bg-white hover:border-2 hover:border-emerald-600 hover:text-emerald-600 transition-all duration-300 cursor-pointer">
+                  Contact Us <FaHandshake className="!ml-2 inline" />
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -102,7 +107,7 @@ const HomeBanner = () => {
             <div className="relative">
               {/* Main background image */}
               <div className="aspect-square sm:aspect-video lg:aspect-square rounded-2xl overflow-hidden relative">
-                <div 
+                <div
                   className="w-full h-full bg-cover bg-center"
                   style={{ backgroundImage: `url(${BGImage})` }}
                 >
@@ -167,7 +172,7 @@ const HomeBanner = () => {
           }
         }
       `}</style>
-    </div>
+    </div >
   );
 };
 

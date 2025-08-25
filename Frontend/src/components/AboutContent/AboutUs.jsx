@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaLeaf, FaTruck, FaAward, FaUsers, FaGlobe, FaSeedling, FaCheckCircle } from 'react-icons/fa';
 import AboutImg from '../../assets/aboutleft.jpg';
 import Logo from '../../assets/jms_logo.png';
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,27 +40,27 @@ const AboutUs = () => {
 
       <div className="container !mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          
+
           {/* Image Column */}
           <div className={`flex-1 w-full transition-all duration-1000 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               {/* Background Image */}
-              <img 
-                src={AboutImg} 
+              <img
+                src={AboutImg}
                 alt="About JMS"
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: 'brightness(0.7) contrast(1.1)' }}
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20"></div>
-              
+
               {/* Logo Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white/20 backdrop-blur-sm !p-6 sm:!p-8 rounded-2xl border border-white/30 transform hover:scale-105 transition-transform duration-700">
                   <div className="bg-white !p-4 sm:!p-6 rounded-xl shadow-2xl">
-                    <img 
-                      src={Logo} 
-                      alt="JMS Global Exporters" 
+                    <img
+                      src={Logo}
+                      alt="JMS Global Exporters"
                       className="w-32 sm:w-40 md:w-48 h-auto !mx-auto"
                     />
                     <div className="text-center !mt-3">
@@ -107,11 +108,11 @@ const AboutUs = () => {
               {/* Description */}
               <div className="!space-y-3 sm:!space-y-4 !mb-6 sm:!mb-8">
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  We are a premier supplier of fresh fruits and vegetables, delivering premium-quality produce 
+                  We are a premier supplier of fresh fruits and vegetables, delivering premium-quality produce
                   directly from farms to destinations worldwide.
                 </p>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  At JMS Global Exporters, we specialize in providing fresh, superior-quality agricultural 
+                  At JMS Global Exporters, we specialize in providing fresh, superior-quality agricultural
                   products sourced directly from certified farms.
                 </p>
               </div>
@@ -156,12 +157,16 @@ const AboutUs = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-3 sm:gap-4">
-                <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1 cursor-pointer text-sm sm:text-base">
-                  Discover Our Products <FaTruck className="!ml-2" />
-                </button>
-                <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300 cursor-pointer text-sm sm:text-base">
-                  Contact Our Team <FaUsers className="!ml-2" />
-                </button>
+                <Link to="/blog">
+                  <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-emerald-600 text-white rounded-lg font-semibold flex items-center hover:bg-emerald-700 transition-colors duration-300 transform hover:-translate-y-1 cursor-pointer text-sm sm:text-base">
+                    Discover Our Blogs <FaTruck className="!ml-2" />
+                  </button>
+                </Link>
+                <Link to="/contact">
+                  <button className="!px-6 !py-2.5 sm:!px-8 sm:!py-3 bg-white text-gray-700 border border-emerald-300 rounded-lg font-semibold flex items-center hover:bg-emerald-50 transition-colors duration-300 cursor-pointer text-sm sm:text-base">
+                    Contact Our Team <FaUsers className="!ml-2" />
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
