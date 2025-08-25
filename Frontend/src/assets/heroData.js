@@ -1,5 +1,6 @@
 import AboutBG from './aboutbg.jpg'
 import EventBG from './eventbg.jpg'
+import BlogBG from './blogbg.jpg'
 import ContactBG from './contactbg.jpg'
 
 export const aboutHero = {
@@ -12,6 +13,12 @@ export const eventHero = {
   id: 2,
   title: "Events",
   HeroImage: EventBG,
+};
+
+export const blogHero = {
+  id: 2,
+  title: "Blogs",
+  HeroImage: BlogBG,
 };
 
 export const contactHero = {

@@ -1,9 +1,13 @@
 import React from 'react'
+import Hero from '../../components/Others/Hero'
+import { blogHero } from '../../assets/heroData'
+import BlogItems from '../../components/BlogContent/BlogItems'
 
 const Blog = () => {
   return (
     <div>
-      Blog
+      <Hero blogHero={blogHero} />
+      <BlogItems />
     </div>
   )
 }
