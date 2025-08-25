@@ -13,6 +13,7 @@ import Blog from './pages/blog/Blog'
 import BlogDetails from './pages/blog/BlogDetails'
 import ScrollToTop from './components/Others/ScrollToTop'
 import NotFound from './components/Others/NotFound'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       <Route path="/product/:productSlug" element={<ProductDetails />} />
     </Routes>
     <FloatingContactIcons />
+    <Footer />
     </BrowserRouter>
   )
 }

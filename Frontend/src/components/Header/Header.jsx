@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logo from '../../assets/jms-logo.png';
-import { Category } from '../../assets/productData'; // Import your category data
+import { Category } from '../../assets/productData';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
