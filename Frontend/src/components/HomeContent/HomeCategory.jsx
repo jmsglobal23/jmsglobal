@@ -13,7 +13,7 @@ const HomeCategory = () => {
         <div className="text-center !mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 !mb-4">
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-500">
+            <span className="text-transparent bg-clip-text bg-emerald-600">
               Product Categories
             </span>
           </h1>

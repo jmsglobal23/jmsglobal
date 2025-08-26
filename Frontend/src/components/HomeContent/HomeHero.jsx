@@ -36,7 +36,7 @@ const HomeHero = () => {
       id: 3,
       title: "Premium Quality",
       description: "Fresh, Certified, and Export-Ready – JMS Global Exporters",
-      buttonText: "Learn More",
+      buttonText: "More About Us",
       link: "/about",
       bgImage: Hero3
     },
@@ -61,7 +61,7 @@ const HomeHero = () => {
       title: "Quality Assurance",
       description: "Your Reliable Partner for Fresh Produce Exports from India",
       buttonText: "Our expertise",
-      link: "/about#choose",
+      link: "/about",
       bgImage: Hero6
     },
     {

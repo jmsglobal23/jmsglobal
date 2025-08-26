@@ -87,7 +87,7 @@ const ContactForm = () => {
         <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl !p-8">
           {/* Header */}
           <div className="text-center !mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 !mb-3 bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold !mb-3 bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
               Contact Us
             </h2>
             <p className="text-gray-600 !mb-6">

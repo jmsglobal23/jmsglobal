@@ -43,7 +43,7 @@ const Footer = () => {
               <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" className='text-emerald-100'>Free Counter</a>
               <script type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=5929cd6677864af9cb4a92e27444f199b91431fb"></script>
               <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1293153/t/5"></script>
-              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" target="_blank"><br /><img src="https://www.freevisitorcounters.com/en/counter/render/1293153/t/5" border="0" class="counterimg" /></a>
+              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" target="_blank"><br /><img src="https://www.freevisitorcounters.com/en/counter/render/1293153/t/5" border="0" alt="counterimg" /></a>
             </div>
           </div>
 
