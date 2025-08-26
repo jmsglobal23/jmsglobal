@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaCalendarAlt, FaMapMarkerAlt, FaArrowLeft, FaClock, FaUsers, FaShare } from 'react-icons/fa';
+import { FaCalendarAlt, FaMapMarkerAlt, FaArrowLeft, FaClock, FaUsers, FaShare, FaCheck } from 'react-icons/fa';
 import { eventData } from '../../assets/eventData';
 
 const EventDetail = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showCopiedMessage, setShowCopiedMessage] = useState(false);
 
   useEffect(() => {
     // Check if id is a number string first, then try string match
-    const foundEvent = eventData.find(e => 
+    const foundEvent = eventData.find(e =>
       e.id === parseInt(id) || e.id === id || e._id === id
     );
     setEvent(foundEvent);
     setIsLoading(false);
-    
+
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, [id]);
@@ -35,6 +36,30 @@ const EventDetail = () => {
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
       </div>
     );
+  }
+
+  // Function to handle sharing
+  const handleShare = () => {
+    const currentUrl = window.location.href;
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(currentUrl)
+      .then(() => {
+        setShowCopiedMessage(true);
+        setTimeout(() => setShowCopiedMessage(false), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback method for copying
+        const textArea = document.createElement('textarea');
+        textArea.value = currentUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setShowCopiedMessage(true);
+        setTimeout(() => setShowCopiedMessage(false), 2000);
+      });
   }
 
   if (!event) {
@@ -89,8 +114,8 @@ const EventDetail = () => {
                   src={event.image}
                   alt={event.title}
                   className="object-contain max-h-full max-w-full p-4"
-                  style={{ 
-                    width: 'auto', 
+                  style={{
+                    width: 'auto',
                     height: 'auto',
                     maxHeight: '100%',
                     maxWidth: '100%'
@@ -101,7 +126,7 @@ const EventDetail = () => {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-              
+
               {/* Date Badge */}
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg !p-4 text-center shadow-md">
                 <div className="text-lg font-bold text-emerald-600">
@@ -119,13 +144,13 @@ const EventDetail = () => {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 !mb-6">
               {event.title}
             </h1>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 !mb-6">
               <div className="flex items-center text-gray-700 bg-emerald-50 rounded-lg !p-3">
                 <FaCalendarAlt className="text-emerald-600 !mr-3 text-lg" />
                 <span className="font-medium">{formatDate(event.date)}</span>
               </div>
-              
+
               <div className="flex items-center text-gray-700 bg-emerald-50 rounded-lg !p-3">
                 <FaMapMarkerAlt className="text-emerald-600 !mr-3 text-lg" />
                 <span className="font-medium">{event.place}</span>
@@ -147,15 +172,29 @@ const EventDetail = () => {
             </div>
 
             <div className="flex items-center gap-4 !mb-6">
-              <button className="flex items-center !px-5 !py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
-                <FaShare className="!mr-2" />
-                Share Event
+              <button
+                onClick={handleShare}
+                className="flex items-center !px-4 !py-2 bg-emerald-100 text-emerald-700 rounded-lg font-semibold hover:bg-emerald-200 transition-colors relative cursor-pointer"
+              >
+                {showCopiedMessage ? (
+                  <>
+                    <FaCheck className="!mr-2" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <FaShare className="!mr-2" />
+                    Share
+                  </>
+                )}
               </button>
-              <button className="flex items-center !px-5 !py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
-                Register Now
-              </button>
-            </div>
+              <Link to='/contact'>
+                <button className="flex items-center !px-5 !py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors cursor-pointer">
+                  Contact Now
+                </button>
 
+              </Link>
+            </div>
             <div className="border-t border-gray-200 !pt-6">
               <h3 className="text-lg font-semibold text-gray-900 !mb-4">About This Event</h3>
               <p className="text-gray-700 leading-relaxed !mb-6">
@@ -168,7 +207,7 @@ const EventDetail = () => {
         {/* Additional Event Details */}
         <div className="bg-white rounded-2xl shadow-xl !p-6 md:!p-8">
           <h2 className="text-xl font-bold text-emerald-600 !mb-6">Event Details</h2>
-          
+
           <div className="prose max-w-none">
             <h3 className="text-lg font-semibold text-gray-900 !mb-4">Key Highlights</h3>
             <ul className="list-disc list-inside text-gray-700 !mb-6 space-y-2">

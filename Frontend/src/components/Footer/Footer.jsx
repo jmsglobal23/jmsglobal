@@ -6,6 +6,7 @@ import {
   FaHome, FaUser, FaCalendarAlt, FaBlog, FaAddressBook
 } from 'react-icons/fa';
 import { Category } from '../../assets/productData';
+import Logo from '../../assets/jms_logo_png.png'
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -17,27 +18,9 @@ const Footer = () => {
     setCategories(Category);
   }, []);
 
-  // Product categories (you can customize these)
-  const productCategories = [
-    "Fresh Bananas",
-    "Premium Onions",
-    "Pomegranates",
-    "Green Chilies",
-    "Drumsticks",
-    "Seasonal Mangoes",
-    "Organic Vegetables",
-    "Exotic Fruits"
-  ];
-
   useEffect(() => {
     // Set current year
     setCurrentYear(new Date().getFullYear());
-
-    // Load external counter script
-    const script = document.createElement('script');
-    script.src = 'https://www.freevisitorcounters.com/en/home/counter/1380891/t/5';
-    script.async = true;
-    document.getElementById('counter-container').appendChild(script);
   }, []);
 
   return (
@@ -49,28 +32,18 @@ const Footer = () => {
           {/* Column 1: Logo, Slogan and Counter */}
           <div className="flex flex-col">
             <div className="flex items-center !mb-4">
-              <FaLeaf className="text-emerald-300 text-4xl !mr-3" />
-              <span className="text-2xl font-bold text-white">JMS Exporters</span>
+              <img src={Logo} alt="JMS Exporters" className='w-[150px]' />
             </div>
             <p className="text-emerald-100 !mb-6 text-lg">
               Delivering Farm Fresh Quality to Your Doorstep
             </p>
 
             {/* Visitor Counter */}
-            <div className="bg-emerald-700/30 !p-4 rounded-lg border border-emerald-500/20">
-              <h3 className="text-emerald-300 font-semibold mb-2 flex items-center">
-                <span className="w-2 h-2 bg-emerald-400 rounded-full !mr-2 animate-pulse"></span>
-                Live Visitor Count
-              </h3>
-              <div id="counter-container" className="flex items-center justify-center !p-2 bg-black/20 rounded">
-                <span id="freevisitorcounter">
-                  <a href='http://www.freevisitorcounters.com' className="hidden">freevisitorcounters.com</a>
-                  <script
-                    type='text/javascript'
-                    src='https://www.freevisitorcounters.com/auth.php?id=ed40b781362c6a8974eb308953ca7b5c9242d4e7'
-                  ></script>
-                </span>
-              </div>
+            <div className="w-full">
+              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" className='text-emerald-100'>Free Counter</a>
+              <script type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=5929cd6677864af9cb4a92e27444f199b91431fb"></script>
+              <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1293153/t/5"></script>
+              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" target="_blank"><br /><img src="https://www.freevisitorcounters.com/en/counter/render/1293153/t/5" border="0" class="counterimg" /></a>
             </div>
           </div>
 
