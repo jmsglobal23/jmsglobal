@@ -3,7 +3,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Hero1 from '../../assets/hero1.png';
 import Hero2 from '../../assets/hero2.png';
 import Hero3 from '../../assets/hero3.png';
-import Hero4 from '../../assets/hero4.png'; // Add your additional hero images
+import Hero4 from '../../assets/hero4.png';
 import Hero5 from '../../assets/hero5.png';
 import Hero6 from '../../assets/hero6.png';
 import Hero7 from '../../assets/hero7.png';
@@ -190,14 +190,7 @@ const HomeHero = () => {
         ))}
       </div>
 
-      {/* Mobile swipe instructions (optional) */}
-      {isMobile && (
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
-          <p className="text-white text-xs bg-black bg-opacity-40 !px-2 !py-1 rounded">
-            Swipe to navigate
-          </p>
-        </div>
-      )}
+      
     </div>
   );
 };
