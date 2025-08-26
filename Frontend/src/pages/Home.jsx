@@ -11,6 +11,11 @@ import Testimonials from '../components/Others/Testimonials'
 const Home = () => {
   return (
     <div>
+      <>
+        <title>Find Perfect Export Company</title>
+        <meta name="description" content='From Indian Farms to Global Markets – Freshness You Can Trust' />
+        <meta name="keywords" content='Fruits Exports, Vegetable Exports' />
+      </>
       <HomeHero />
       <HomeCategory />
       <HomeMessage />
