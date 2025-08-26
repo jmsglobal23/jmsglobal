@@ -3,18 +3,23 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Hero1 from '../../assets/hero1.png';
 import Hero2 from '../../assets/hero2.png';
 import Hero3 from '../../assets/hero3.png';
+import Hero4 from '../../assets/hero4.png'; // Add your additional hero images
+import Hero5 from '../../assets/hero5.png';
+import Hero6 from '../../assets/hero6.png';
+import Hero7 from '../../assets/hero7.png';
 import { Link } from 'react-router-dom';
 
 const HomeHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('next');
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   const slides = [
     {
       id: 1,
       title: "Find Perfect Export Company",
-      description: "To deliver Safe,Hygenic And Healthy Food To Our Consumers",
+      description: "From Indian Farms to Global Markets – Freshness You Can Trust",
       buttonText: "Get Started",
       link: "/contact",
       bgImage: Hero1
@@ -22,7 +27,7 @@ const HomeHero = () => {
     {
       id: 2,
       title: "Huge Global Markets",
-      description: "From Indian Farms to Global Markets – Freshness You Can Trust",
+      description: "Supplying Premium Indian Fruits & Vegetables to the World",
       buttonText: "Our Blogs",
       link: "/blog",
       bgImage: Hero2
@@ -30,24 +35,58 @@ const HomeHero = () => {
     {
       id: 3,
       title: "Premium Quality",
-      description: "Supplying Premium Indian Fruits & Vegetables to the World",
+      description: "Fresh, Certified, and Export-Ready – JMS Global Exporters",
       buttonText: "Learn More",
       link: "/about",
       bgImage: Hero3
+    },
+    {
+      id: 4,
+      title: "Global Export Excellence",
+      description: "Connecting Indian Farmers with International Buyers",
+      buttonText: "Explore Events",
+      link: "/events",
+      bgImage: Hero4
+    },
+    {
+      id: 5,
+      title: "Fresh From Farm",
+      description: "Trusted Worldwide for Fresh Indian Fruits & Vegetable",
+      buttonText: "View Popular Products",
+      link: "/category/fresh-fruits-&-vegetables",
+      bgImage: Hero5
+    },
+    {
+      id: 6,
+      title: "Quality Assurance",
+      description: "Your Reliable Partner for Fresh Produce Exports from India",
+      buttonText: "Our expertise",
+      link: "/about#choose",
+      bgImage: Hero6
+    },
+    {
+      id: 7,
+      title: "Sustainable Farming",
+      description: "Delivering Quality, Freshness, and Trust Across Borders",
+      buttonText: "Our location",
+      link: "/contact",
+      bgImage: Hero7
     }
   ];
 
-  // Check if mobile view
+  // Check screen size for responsive behavior
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1024);
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
 
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', checkScreenSize);
     };
   }, []);
 
@@ -103,10 +142,10 @@ const HomeHero = () => {
           {/* Content */}
           <div className="relative flex items-center justify-center h-full text-center text-white">
             <div className="!max-w-4xl !px-4 transform transition-all duration-1000 ease-in-out">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold !mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold !mb-4">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl !mb-8 !max-w-2xl !mx-auto">
+              <p className="text-lg sm:text-xl md:text-2xl !mb-8 !max-w-2xl !mx-auto">
                 {slide.description}
               </p>
               <Link to={`${slide.link}`}>
@@ -119,35 +158,46 @@ const HomeHero = () => {
         </div>
       ))}
 
-      {/* Navigation arrows - hidden on mobile */}
+      {/* Navigation arrows - hidden on mobile, visible on tablet and desktop */}
       <button
         onClick={goToPrevSlide}
-        className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
+        className={`absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-2 sm:!p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Previous slide"
       >
-        <FaChevronLeft size={24} />
+        <FaChevronLeft size={isTablet ? 20 : 24} />
       </button>
 
       <button
         onClick={goToNextSlide}
-        className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
+        className={`absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white !p-2 sm:!p-3 rounded-full hover:bg-opacity-70 transition-all duration-300 z-20 cursor-pointer ${isMobile ? '!hidden' : '!block'}`}
         aria-label="Next slide"
       >
-        <FaChevronRight size={24} />
+        <FaChevronRight size={isTablet ? 20 : 24} />
       </button>
 
-      {/* Line indicators with green active state */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex !space-x-3 z-20">
+      {/* Line indicators with green active state - Responsive for 7 slides */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex !space-x-1 sm:!space-x-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-1 transition-all duration-500 ease-in-out cursor-pointer rounded-full ${index === currentSlide ? '!w-8 bg-emerald-600' : '!w-4 bg-white bg-opacity-50 hover:bg-opacity-75'
-              }`}
+            className={`h-1.5 sm:h-2 transition-all duration-500 ease-in-out cursor-pointer rounded-full ${index === currentSlide 
+              ? '!w-6 sm:!w-8 bg-emerald-600' 
+              : '!w-2 sm:!w-3 bg-white bg-opacity-50 hover:bg-opacity-75'
+            }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
+
+      {/* Mobile swipe instructions (optional) */}
+      {isMobile && (
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
+          <p className="text-white text-xs bg-black bg-opacity-40 !px-2 !py-1 rounded">
+            Swipe to navigate
+          </p>
+        </div>
+      )}
     </div>
   );
 };

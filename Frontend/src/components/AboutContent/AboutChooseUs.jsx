@@ -59,7 +59,7 @@ const AboutChooseUs = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-green-50 to-cyan-50 overflow-hidden !py-16 !px-4 sm:!px-6 lg:!px-8">
+    <div className="#choose relative min-h-screen bg-gradient-to-br from-green-50 to-cyan-50 overflow-hidden !py-16 !px-4 sm:!px-6 lg:!px-8">
       {/* Animated Fruit Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
