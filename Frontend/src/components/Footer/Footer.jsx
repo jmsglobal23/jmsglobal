@@ -136,14 +136,14 @@ const Footer = () => {
                 <h4 className="text-lg font-medium !mb-3">Follow Us</h4>
                 <div className="flex !space-x-4">
                   {[
-                    { icon: FaFacebookF, color: "hover:bg-blue-600", href: "#" },
-                    { icon: FaTwitter, color: "hover:bg-blue-400", href: "#" },
-                    { icon: FaInstagram, color: "hover:bg-pink-600", href: "#" },
-                    { icon: FaLinkedinIn, color: "hover:bg-blue-700", href: "#" }
+                    { icon: FaFacebookF, color: "hover:bg-blue-600", href: "https://www.facebook.com/share/174TUXRu7p/", target: "_blank" },
+                    { icon: FaTwitter, color: "hover:bg-blue-400", href: "Check out J M S GLOBAL EXPORTERS. (@jms211299): https://x.com/jms211299?t=KJ9IKACVnXKrG8M4edQgXw&s=08", target: "_blank" },
+                    { icon: FaInstagram, color: "hover:bg-pink-600", href: "I'm on Instagram as @jms_global_exporters. Install the app to follow my photos and videos. https://www.instagram.com/jms_global_exporters?igsh=MXM3aDZkaHZzbnY0aw==&utm_source=ig_contact_invite", target: "_blank" },
                   ].map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
+                      target={social.target}
                       className={`bg-emerald-700/50 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:scale-110 ${social.color}`}
                       aria-label={`Follow on ${social.icon.name}`}
                     >
