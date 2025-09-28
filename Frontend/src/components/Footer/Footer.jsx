@@ -7,10 +7,10 @@ import {
   FaBoxOpen, FaChartLine, FaGlobe, FaUsers
 } from 'react-icons/fa';
 import Logo from '../../assets/jms_logo_png.png'
-import { API_BASE_URL } from '../Others/BaseURL';
+import { Category } from '../../assets/productData';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [visitCount, setVisitCount] = useState(0);
@@ -20,44 +20,14 @@ const Footer = () => {
   const COUNTER_DEV_DASHBOARD = "https://counter.dev/dashboard.html";
 
   useEffect(() => {
-    // Fetch categories
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/categories`);
-        if (!response.ok) {
-          throw new Error('Could not fetch categories');
-        }
-        const responseData = await response.json();
-        setCategories(responseData.data?.slice(0, 5) || []);
-      } catch (err) {
-        setError(err.message);
-        console.error("Failed to fetch categories for footer:", err);
-      }
-    };
+    // In a real application, you would fetch this from your API
+    // For now, using the imported Category data
+    setCategories(Category);
+  }, []);
 
-    // Initialize counter - Using localStorage as fallback
-    const initializeCounter = () => {
-      try {
-        // Get current count from localStorage
-        const storedCount = localStorage.getItem('jms_global_exporters_visits');
-        let currentCount = storedCount ? parseInt(storedCount) : 12567; // Starting number
-        
-        // Increment count for this visit
-        currentCount += 1;
-        localStorage.setItem('jms_global_exporters_visits', currentCount.toString());
-        
-        setVisitCount(currentCount);
-      } catch (err) {
-        console.error("Failed to initialize counter:", err);
-        // Fallback number
-        setVisitCount(12567);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCategories();
-    initializeCounter();
+  useEffect(() => {
+    // Set current year
+    setCurrentYear(new Date().getFullYear());
   }, []);
 
   // Format number with leading zeros (0000567 format)
