@@ -30,6 +30,31 @@ const Footer = () => {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
+  useEffect(() => {
+    // Initialize counter - Using localStorage as fallback
+    const initializeCounter = () => {
+      try {
+        // Get current count from localStorage
+        const storedCount = localStorage.getItem('jms_global_exporters_visits');
+        let currentCount = storedCount ? parseInt(storedCount) : 2; // Starting number
+        
+        // Increment count for this visit
+        currentCount += 1;
+        localStorage.setItem('jms_global_exporters_visits', currentCount.toString());
+        
+        setVisitCount(currentCount);
+      } catch (err) {
+        console.error("Failed to initialize counter:", err);
+        // Fallback number
+        setVisitCount(12567);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeCounter();
+  }, []);
+
   // Format number with leading zeros (0000567 format)
   const formatVisitCount = (count) => {
     return count.toString().padStart(7, '0');
