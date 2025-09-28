@@ -46,7 +46,7 @@ const Footer = () => {
       } catch (err) {
         console.error("Failed to initialize counter:", err);
         // Fallback number
-        setVisitCount(12567);
+        setVisitCount(2);
       } finally {
         setIsLoading(false);
       }
@@ -115,18 +115,6 @@ const Footer = () => {
                     </div>
                   </>
                 )}
-              </div>
-              
-              {/* Counter.dev Setup Instructions */}
-              <div className="bg-emerald-800/20 rounded p-3 !mt-3 border border-emerald-700/30">
-                <p className="text-emerald-300 text-xs !mb-2 font-semibold">
-                  Advanced Analytics Setup:
-                </p>
-                <ol className="text-emerald-200 text-xs list-decimal list-inside space-y-1">
-                  <li>Visit <a href="https://counter.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">counter.dev</a></li>
-                  <li>Sign up & add your website</li>
-                  <li>Get detailed country analytics</li>
-                </ol>
               </div>
             </div>
           </div>
