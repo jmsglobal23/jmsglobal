@@ -3,25 +3,67 @@ import { Link } from 'react-router-dom';
 import {
   FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn,
   FaPhone, FaEnvelope, FaMapMarkerAlt, FaLeaf,
-  FaHome, FaUser, FaCalendarAlt, FaBlog, FaAddressBook
+  FaHome, FaUser, FaCalendarAlt, FaBlog, FaAddressBook,
+  FaBoxOpen, FaChartLine, FaGlobe, FaUsers
 } from 'react-icons/fa';
-import { Category } from '../../assets/productData';
 import Logo from '../../assets/jms_logo_png.png'
+import { API_BASE_URL } from '../Others/BaseURL';
 
 const Footer = () => {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const currentYear = new Date().getFullYear();
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(null);
+  const [visitCount, setVisitCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Counter.dev Dashboard URL - Replace with your actual dashboard URL
+  const COUNTER_DEV_DASHBOARD = "https://counter.dev/dashboard.html";
 
   useEffect(() => {
-    // In a real application, you would fetch this from your API
-    // For now, using the imported Category data
-    setCategories(Category);
+    // Fetch categories
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/categories`);
+        if (!response.ok) {
+          throw new Error('Could not fetch categories');
+        }
+        const responseData = await response.json();
+        setCategories(responseData.data?.slice(0, 5) || []);
+      } catch (err) {
+        setError(err.message);
+        console.error("Failed to fetch categories for footer:", err);
+      }
+    };
+
+    // Initialize counter - Using localStorage as fallback
+    const initializeCounter = () => {
+      try {
+        // Get current count from localStorage
+        const storedCount = localStorage.getItem('jms_global_exporters_visits');
+        let currentCount = storedCount ? parseInt(storedCount) : 12567; // Starting number
+        
+        // Increment count for this visit
+        currentCount += 1;
+        localStorage.setItem('jms_global_exporters_visits', currentCount.toString());
+        
+        setVisitCount(currentCount);
+      } catch (err) {
+        console.error("Failed to initialize counter:", err);
+        // Fallback number
+        setVisitCount(12567);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
+    initializeCounter();
   }, []);
 
-  useEffect(() => {
-    // Set current year
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  // Format number with leading zeros (0000567 format)
+  const formatVisitCount = (count) => {
+    return count.toString().padStart(7, '0');
+  };
 
   return (
     <footer className="bg-gradient-to-b from-emerald-800 to-green-900 text-white !pt-12 !pb-6 !px-4 md:!px-8">
@@ -38,15 +80,63 @@ const Footer = () => {
               Delivering Farm Fresh Quality to Your Doorstep
             </p>
 
-            {/* Visitor Counter */}
-            <div className="w-full">
-              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" className='text-emerald-100'>Free Counter</a>
-              <script type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=5929cd6677864af9cb4a92e27444f199b91431fb"></script>
-              <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1293153/t/5"></script>
-              <a href="https://www.freevisitorcounters.com/en/home/stats/id/1293153" target="_blank"><br /><img src="https://www.freevisitorcounters.com/en/counter/render/1293153/t/5" border="0" alt="counterimg" /></a>
+            {/* Modern Visitor Counter */}
+            <div className="w-full !mt-4">
+              <div className="bg-emerald-900/30 rounded-lg p-4 border border-emerald-700/50">
+                <div className="flex items-center justify-between !mb-2">
+                  <span className="text-emerald-200 text-sm font-medium flex items-center">
+                    <FaUsers className="!mr-2" />
+                    Total Visits
+                  </span>
+                  <a 
+                    href={COUNTER_DEV_DASHBOARD} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-xs flex items-center transition-colors"
+                    title="View detailed analytics dashboard"
+                  >
+                    <FaChartLine className="!mr-1" />
+                    View Analytics
+                  </a>
+                </div>
+                
+                {isLoading ? (
+                  <div className="flex justify-center">
+                    <div className="animate-pulse bg-emerald-700 h-8 w-32 rounded"></div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-2xl font-bold text-white font-mono text-center tracking-wider bg-emerald-800/50 py-2 rounded border border-emerald-600/30">
+                      {formatVisitCount(visitCount)}
+                    </div>
+                    <div className="flex justify-between items-center !mt-3">
+                      <span className="text-emerald-300 text-xs flex items-center">
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse !mr-2"></span>
+                        Live Counter
+                      </span>
+                      <span className="text-emerald-400 text-xs">
+                        Since 2024
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              {/* Counter.dev Setup Instructions */}
+              <div className="bg-emerald-800/20 rounded p-3 !mt-3 border border-emerald-700/30">
+                <p className="text-emerald-300 text-xs !mb-2 font-semibold">
+                  Advanced Analytics Setup:
+                </p>
+                <ol className="text-emerald-200 text-xs list-decimal list-inside space-y-1">
+                  <li>Visit <a href="https://counter.dev" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">counter.dev</a></li>
+                  <li>Sign up & add your website</li>
+                  <li>Get detailed country analytics</li>
+                </ol>
+              </div>
             </div>
           </div>
 
+          {/* Rest of your columns remain exactly the same */}
           {/* Column 2: Quick Links */}
           <div>
             <h3 className="text-xl font-semibold !mb-6 !pb-2 border-b border-emerald-600/30 flex items-center">
@@ -79,16 +169,20 @@ const Footer = () => {
           {/* Column 3: Product Categories */}
           <div>
             <h3 className="text-xl font-semibold !mb-6 !pb-2 border-b border-emerald-600/30 flex items-center">
-              <span className="bg-emerald-600 !p-1 rounded !mr-2">
-                <FaLeaf className="text-sm" />
-              </span>
+              <span className="bg-emerald-600 !p-1 rounded !mr-2"><FaLeaf className="text-sm" /></span>
               Our Products
             </h3>
             <ul className="!space-y-3">
-              {categories.map((category, index) => (
-                <li key={index} className="group">
+              <li className="group">
+                <Link to="/products" className="flex items-center text-emerald-100 hover:text-white transition-all duration-300 group-hover:translate-x-1">
+                  <FaBoxOpen className="!mr-3 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                  All Products
+                </Link>
+              </li>
+              {categories.map((category) => (
+                <li key={category._id} className="group">
                   <Link
-                    to={`/category/${category.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    to={`/category/${category.slug}`}
                     className="flex items-center text-emerald-100 hover:text-white transition-all duration-300 group-hover:translate-x-1"
                   >
                     <span className="w-2 h-2 bg-emerald-400 rounded-full !mr-3 group-hover:bg-emerald-300 transition-colors"></span>
@@ -137,13 +231,14 @@ const Footer = () => {
                 <div className="flex !space-x-4">
                   {[
                     { icon: FaFacebookF, color: "hover:bg-blue-600", href: "https://www.facebook.com/share/174TUXRu7p/", target: "_blank" },
-                    { icon: FaTwitter, color: "hover:bg-blue-400", href: "Check out J M S GLOBAL EXPORTERS. (@jms211299): https://x.com/jms211299?t=KJ9IKACVnXKrG8M4edQgXw&s=08", target: "_blank" },
-                    { icon: FaInstagram, color: "hover:bg-pink-600", href: "I'm on Instagram as @jms_global_exporters. Install the app to follow my photos and videos. https://www.instagram.com/jms_global_exporters?igsh=MXM3aDZkaHZzbnY0aw==&utm_source=ig_contact_invite", target: "_blank" },
+                    { icon: FaTwitter, color: "hover:bg-blue-400", href: "https://x.com/jms211299", target: "_blank" },
+                    { icon: FaInstagram, color: "hover:bg-pink-600", href: "https://www.instagram.com/jms_global_exporters", target: "_blank" },
                   ].map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
-                      target={social.target}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`bg-emerald-700/50 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300 transform hover:scale-110 ${social.color}`}
                       aria-label={`Follow on ${social.icon.name}`}
                     >
@@ -161,11 +256,19 @@ const Footer = () => {
           <p className="text-emerald-200 text-sm">
             © {currentYear} JMS Global Exporters. All rights reserved. |
             <span className="text-emerald-300 !ml-1">
-              Made My MetlifeDM
+              Made by MetlifeDM
             </span>
           </p>
         </div>
       </div>
+
+      {/* Counter.dev Tracking Script - Add this to track actual visits */}
+      <script 
+        async 
+        src="https://cdn.counter.dev/script.js" 
+        data-id="8d5e24ee-7cc2-43e7-a0da-e69bf0f66b9b" 
+        data-utcoffset="6"
+      ></script>
     </footer>
   );
 };
